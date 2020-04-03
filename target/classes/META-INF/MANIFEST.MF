@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: acl-fasttag-app
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: prem.sahani
+Implementation-Vendor-Id: com.acl
+Build-Jdk: 1.8.0_242
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/acl-fasttag-app
+Created-By: Maven Integration for Eclipse
+
