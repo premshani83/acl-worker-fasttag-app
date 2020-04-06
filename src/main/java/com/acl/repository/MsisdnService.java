@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import com.acl.AppConstant;
@@ -51,9 +52,12 @@ public class MsisdnService implements MsidnRepository {
 		return listOps.leftPop(keys);
 	}
 	
+
 	@Override
-	public void saveRetry(String keyAsTimeStamp, MSDNDetailsDTO msdnDetailsDTO) {
+	
+	public synchronized void  saveRetry(String keyAsTimeStamp, MSDNDetailsDTO msdnDetailsDTO) {
 		List<MSDNDetailsDTO> listOfRetry= hashOps.get(appConstant.getRetryQueue(), keyAsTimeStamp);
+		System.out.println("size of retry list "+listOfRetry);
 		if(listOfRetry==null) {
 			listOfRetry=new ArrayList<MSDNDetailsDTO>();
 		}

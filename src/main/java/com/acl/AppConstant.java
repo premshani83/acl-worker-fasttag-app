@@ -1,13 +1,17 @@
 package com.acl;
 
-import java.util.Arrays;
-
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+/**
+ * Application constant file which have the all constant 
+ * All constant load from the properties file
+ * @author prem.sahani
+ *
+ */
 @Component
 public class AppConstant {
 

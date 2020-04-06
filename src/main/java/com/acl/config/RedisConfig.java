@@ -23,6 +23,12 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * Redis Configuration 
+ * Its able to communicate to the redis db
+ * @author prem.sahani
+ *
+ */
 @Configuration
 
 public class RedisConfig {
@@ -44,6 +50,7 @@ public class RedisConfig {
 			if (!StringUtils.isEmpty(redisPassword))
 				redisStandaloneConfiguration.setPassword(RedisPassword.of(redisPassword));
 			logger.info("Connected to Redis Server :  " + redisHost + ":" + redisPort);
+			
 			return new JedisConnectionFactory(redisStandaloneConfiguration);
 		} catch (Exception e) {
 			logger.error("Error comes into redis connection : ", e);
@@ -71,6 +78,7 @@ public class RedisConfig {
 	        template.setHashValueSerializer(jackson2JsonRedisSerializerHash);
 	        template.setDefaultSerializer(jackson2JsonRedisSerializer);
 	        template.setValueSerializer(jackson2JsonRedisSerializer);
+	        template.setEnableTransactionSupport(true);
 		return template;
 	}
 

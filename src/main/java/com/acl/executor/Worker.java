@@ -120,7 +120,12 @@ public class Worker implements Callable<MSDNDetailsDTO> {
 					}
 					job.setRetryCount(job.getRetryCount() + 1);
 					job.setUpdatDate(new Date());
-					msisdnService.saveRetry(incrementedTimeStamp, job);
+					
+						System.out.println("starting save ");
+						msisdnService.saveRetry(incrementedTimeStamp, job);
+						System.out.println("ending save ");
+					
+					
 					logger.info("added into retry queue " + AppUtils.maskString(job.getMsisdn(), 0,  "X")+" Retry Count "+job.getRetryCount());
 				} else {
 					smsPush.sendSMS(job.getMsisdn(), errorRespTemplate);
